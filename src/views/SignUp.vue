@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="signup">
     <v-container >
       <v-row justify="center" align="center" class="mt-12">
       <v-col align="center" class="shrink" >
@@ -14,7 +14,7 @@
           class="ma-5"
           color="white"
           elevation="1"
-          height="380"
+          height="520"
           width="350"
         >
         <v-col >
@@ -24,25 +24,41 @@
           max-width="180"
           src="../assets/insta_name.png"
         ></v-img>
+        <h4 class="mb-n5 mx-7" style="opacity:60%;">Sign up to see photos and videos from your friends.</h4>
+        <v-divider class="mt-7 mx-7"></v-divider>
         <v-text-field
             filled        
             class="mx-7 pt-4 rounded-1"
-            label="Email or Username"
+            label="Email"
             outlined
             dense
           ></v-text-field>
           <v-text-field
             filled        
-            class="mx-7 mt-n5 rounded-1"
+            class="mx-7 mt-n4 rounded-1"
+            label="Full Name"
+            outlined
+            dense
+          ></v-text-field>
+           <v-text-field
+            filled        
+            class="mx-7 mt-n4 rounded-1"
+            label="Username"
+            outlined
+            dense
+          ></v-text-field>
+           <v-text-field
+            filled        
+            class="mx-7 mt-n4 rounded-1"
             label="Password"
             outlined
             dense
           ></v-text-field>
           <v-btn color="light-blue darken-1" width="270" height="32" class="mt-n3">
-          <p class="white--text text-button mt-5">Login</p>
+          <p class="white--text text-button mt-5">Sign Up</p>
           </v-btn>
-          <v-divider class="mt-7 mx-7"></v-divider>
-          <p class="text-body-2 pt-9"> <a>Forgot Password?</a></p>
+          
+          <p class="text-caption pt-9 px-7" style="opacity:70%;">By signing up, you agree to our Terms , Data Policy and Cookies Policy . </p>
           </v-col>
         </v-sheet>
         <v-sheet
@@ -52,7 +68,7 @@
           height="65"
           width="350"
         >
-        <p class="text-body-2 pt-6">Dont have an account? <a href="/signup"><b>Sign Up</b></a></p>
+        <p class="text-body-2 pt-6">Already have an account? <a href="/login"><b> Login</b></a></p>
         </v-sheet>
         </v-col>
       </v-row>
@@ -62,7 +78,7 @@
 
 <script>
 export default {
-  name: "Login",
+  name: "SignUp",
 
   components: {
     //

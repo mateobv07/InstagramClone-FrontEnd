@@ -10,7 +10,7 @@
         <v-col xl="4" md="8">
           <v-row class="mt-5">
             <h4 class="text-h5">{{username}}</h4>
-            <v-btn elevation="0" class="blue lighten-1 ml-5" height="30"> <p class="white--text pt-4"> Follow </p></v-btn>
+            <v-btn elevation="0" class="light-blue darken-1 ml-5" height="30"> <p class="white--text pt-4"> Follow </p></v-btn>
             <v-icon class="ml-4" color="black">mdi-dots-horizontal</v-icon>
           </v-row>
           <v-row class="mt-5">

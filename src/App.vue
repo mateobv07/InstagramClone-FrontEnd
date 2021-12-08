@@ -1,16 +1,16 @@
 <template>
   <v-app style="background-color: #f2f6f7">
-    <v-app-bar app elevation="1" height="55">
+    <v-app-bar app elevation="1" height="55" v-if="isTask">
       <div class="d-flex align-center">
       <v-btn elevation="0" @click="goToHome()">
-      
+
         <v-img
           alt="Instagram logo"
           class="shrink mr-2"
           contain
           src="../src/assets/insta_name.png"
           transition="scale-transition"
-          width="100"
+          width="150"
         /></v-btn>
       </div>
       <v-spacer></v-spacer>
@@ -86,6 +86,15 @@ export default {
       { title: 'Logout' , icon: 'mdi-logout', route: "/logout" },
     ],
   }),
+
+  computed:{
+     isTask() {
+      return (
+        this.$route.name !== "Login" &&
+        this.$route.name !== "SignUp" 
+      );
+    },
+  },
    methods:{
    goToHome(){
    this.$router.push('/'); 

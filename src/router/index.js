@@ -20,9 +20,15 @@ const routes = [
     name: "Login",
     component: () => import("../views/Login.vue"),
   },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: () => import("../views/SignUp.vue"),
+  },
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
