@@ -49,20 +49,20 @@
                   </p>
                 </v-btn>
               </template>
-              <v-card height="800" class="mb-3 mx-n3" style="background-color: black;">
-                <v-row >
+              <v-card height="800" class="mb-1" style="background-color: black;">
+                <v-row no-gutters>
                 <v-col md="8" align="center">
                     <v-img
                       contain
                       alt="post picture"
                       :lazy-src="post_picture"
                       max-width="1000"
-                      max-height="780"
+                      max-height="800"
                       :src="post_picture"
                     ></v-img></v-col>
                     
                     <v-col >
-                    <v-sheet class="mt-n3" height="800" style="background-color: white;">
+                    <v-sheet class="mt-n3" height="812" style="background-color: white;">
                     <v-row class="mx-3">
                       <v-avatar
                         size="35"
