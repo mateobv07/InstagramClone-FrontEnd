@@ -50,6 +50,7 @@ export default {
     Post,
   },
   data: () => ({
+    dialog: false,
     posts: [
       {
         "username" : "Usuario",
@@ -63,7 +64,7 @@ export default {
       {
         "username" : "Usuario",
         "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        "post_picture" : "https://wallpaperaccess.com/full/31193.jpg",
+        "post_picture" : "https://wallpapercave.com/wp/wp4576169.jpg",
         "post_likes" : 200,
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : ["Nice", "lol", "lorem impsum comment"],
@@ -72,7 +73,7 @@ export default {
       {
         "username" : "Usuario",
         "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        "post_picture" : "https://wallpaperaccess.com/full/31193.jpg",
+        "post_picture" : "https://us.123rf.com/450wm/kostsov/kostsov1906/kostsov190600026/126080344-modern-showcase-with-empty-space-on-pedestal-on-blue-background-3d-rendering-.jpg?ver=6",
         "post_likes" : 200,
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : ["Nice", "lol", "lorem impsum comment"],

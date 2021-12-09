@@ -16,7 +16,7 @@
               style="border: 2px solid pink; padding: 19px"
               ><img :src="profile_picture" alt="profile_pic"
             /></v-avatar>
-            <h4 class="text-subtitle-2">{{username}}</h4>
+            <h4 class="text-subtitle-2">{{ username }}</h4>
           </v-card-title>
 
           <v-divider></v-divider>
@@ -32,18 +32,65 @@
             <v-icon size="30" color="black">mdi-bookmark-outline</v-icon>
           </v-row>
           <v-row class="mx-4 mt-6">
-            <h4 class="text-subtitle-2">{{post_likes}} likes</h4>
+            <h4 class="text-subtitle-2">{{ post_likes }} likes</h4>
           </v-row>
           <v-row class="mx-4 mt-4">
-            <h4 class="text-subtitle-2">{{username}}</h4>
+            <h4 class="text-subtitle-2">{{ username }}</h4>
             <p class="text-body-2 mx-1" style="padding-top: 1.5px">
-              {{post_description}}
+              {{ post_description }}
             </p>
           </v-row>
-          <v-row class="mx-4 mt-n3">
-            <p class="text-body-2" style="opacity: 65%">View {{post_comments.length}} comments</p>
+          <v-row class="ml-n1 mt-0">
+            <v-dialog v-model="viewPost" max-width="1400" >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn text v-bind="attrs" v-on="on" height="20">
+                  <p class="text-body-2 mt-3" style="opacity: 65%">
+                    View {{ post_comments.length }} comments
+                  </p>
+                </v-btn>
+              </template>
+              <v-card height="800" class="mb-3 mx-n3" style="background-color: black;">
+                <v-row >
+                <v-col md="8" align="center">
+                    <v-img
+                      contain
+                      alt="post picture"
+                      :lazy-src="post_picture"
+                      max-width="1000"
+                      max-height="780"
+                      :src="post_picture"
+                    ></v-img></v-col>
+                    
+                    <v-col >
+                    <v-sheet class="mt-n3" height="800" style="background-color: white;">
+                    <v-row class="mx-3">
+                      <v-avatar
+                        size="35"
+                        class="mr-3 mt-5"
+                        style="border: 2px solid pink; padding: 19px"
+                        ><img :src="profile_picture" alt="profile_pic"
+                      /></v-avatar>
+                      <h4 class="text-subtitle-2 mt-8">{{ username }}  - Following</h4>
+                    </v-row>
+                    <v-divider class="mt-5"></v-divider>
+                     <v-row class="mx-3">
+                      <v-avatar
+                        size="35"
+                        class="mr-3 mt-5"
+                        style="border: 2px solid pink; padding: 19px"
+                        ><img :src="profile_picture" alt="profile_pic"
+                      /></v-avatar>
+                      <h4 class="text-subtitle-2 mt-8">{{ username }}</h4><p class="text-body-2 mx-2 mt-8" style="padding-top: 1.5px">
+              {{ post_description }}
+            </p>
+                    </v-row>
+                    </v-sheet>
+                    </v-col>
+                </v-row>
+              </v-card>
+            </v-dialog>
           </v-row>
-          <v-row class="mx-4 mt-n3 mb-0">
+          <v-row class="mx-4 mt-3 mb-0">
             <p class="BUTTON" style="opacity: 65%; font-size: x-small">
               HACE 4 HORAS
             </p>
@@ -69,7 +116,7 @@
 <script>
 export default {
   name: "Post",
-
+  viewPost: false,
   data: () => ({
     story_images: 6,
   }),
