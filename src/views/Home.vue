@@ -58,7 +58,7 @@ export default {
         "post_picture" : "https://wallpaperaccess.com/full/31193.jpg",
         "post_likes" : 200,
         "post_description" : "Usuario Insta life lol lorem ipsum",
-        "post_comments" : ["Nice", "lol", "lorem impsum comment"],
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
         },
       {
@@ -67,7 +67,7 @@ export default {
         "post_picture" : "https://wallpapercave.com/wp/wp4576169.jpg",
         "post_likes" : 200,
         "post_description" : "Usuario Insta life lol lorem ipsum",
-        "post_comments" : ["Nice", "lol", "lorem impsum comment"],
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
       },
       {
@@ -76,7 +76,7 @@ export default {
         "post_picture" : "https://us.123rf.com/450wm/kostsov/kostsov1906/kostsov190600026/126080344-modern-showcase-with-empty-space-on-pedestal-on-blue-background-3d-rendering-.jpg?ver=6",
         "post_likes" : 200,
         "post_description" : "Usuario Insta life lol lorem ipsum",
-        "post_comments" : ["Nice", "lol", "lorem impsum comment"],
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
       },
     ],

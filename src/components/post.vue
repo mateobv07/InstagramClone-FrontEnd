@@ -41,7 +41,7 @@
             </p>
           </v-row>
           <v-row class="ml-n1 mt-0">
-            <v-dialog v-model="viewPost" max-width="1400" >
+            <v-dialog v-model="viewPost" max-width="1400">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn text v-bind="attrs" v-on="on" height="20">
                   <p class="text-body-2 mt-3" style="opacity: 65%">
@@ -49,43 +49,69 @@
                   </p>
                 </v-btn>
               </template>
-              <v-card height="800" class="mb-1" style="background-color: black;">
+              <v-card height="800" class="mb-1" style="background-color: black">
                 <v-row no-gutters>
-                <v-col md="8" align="center">
+                  <v-col md="8" align="center">
                     <v-img
                       contain
                       alt="post picture"
                       :lazy-src="post_picture"
-                      max-width="1000"
-                      max-height="800"
+                      width="1000"
+                      height="800"
                       :src="post_picture"
-                    ></v-img></v-col>
-                    
-                    <v-col >
-                    <v-sheet class="mt-n3" height="812" style="background-color: white;">
-                    <v-row class="mx-3">
-                      <v-avatar
-                        size="35"
-                        class="mr-3 mt-5"
-                        style="border: 2px solid pink; padding: 19px"
-                        ><img :src="profile_picture" alt="profile_pic"
-                      /></v-avatar>
-                      <h4 class="text-subtitle-2 mt-8">{{ username }}  - Following</h4>
-                    </v-row>
-                    <v-divider class="mt-5"></v-divider>
-                     <v-row class="mx-3">
-                      <v-avatar
-                        size="35"
-                        class="mr-3 mt-5"
-                        style="border: 2px solid pink; padding: 19px"
-                        ><img :src="profile_picture" alt="profile_pic"
-                      /></v-avatar>
-                      <h4 class="text-subtitle-2 mt-8">{{ username }}</h4><p class="text-body-2 mx-2 mt-8" style="padding-top: 1.5px">
-              {{ post_description }}
-            </p>
-                    </v-row>
+                    ></v-img
+                  ></v-col>
+
+                  <v-col>
+                    <v-sheet
+                      class="mt-n3"
+                      height="812"
+                      style="background-color: white"
+                    >
+                      <v-row class="mx-3">
+                        <v-avatar
+                          size="35"
+                          class="mr-3 mt-5"
+                          style="border: 2px solid pink; padding: 19px"
+                          ><img :src="profile_picture" alt="profile_pic"
+                        /></v-avatar>
+                        <h4 class="text-subtitle-2 mt-8">
+                          {{ username }} - Following
+                        </h4>
+                      </v-row>
+                      <v-divider class="mt-5"></v-divider>
+                      <v-row class="mx-3">
+                        <v-avatar
+                          size="35"
+                          class="mr-3 mt-5"
+                          style="border: 2px solid pink; padding: 19px"
+                          ><img :src="profile_picture" alt="profile_pic"
+                        /></v-avatar>
+                        <h4 class="text-subtitle-2 mt-8">{{ username }}</h4>
+                        <p
+                          class="text-body-2 mx-2 my-8"
+                          style="padding-top: 1.5px"
+                        >
+                          {{ post_description }}
+                        </p>
+                      </v-row>
+                      <v-row
+                        v-for="comment in post_comments"
+                        :key="`${comment}`"
+                        class="mx-5"
+                      >
+                        <h4 class="text-subtitle-2 ">
+                          {{ comment.username }}
+                        </h4>
+                        <p
+                          class="text-body-2 mx-2"
+                          style="padding-top: 1.5px"
+                        >
+                          {{ comment.comment }}
+                        </p>
+                      </v-row>
                     </v-sheet>
-                    </v-col>
+                  </v-col>
                 </v-row>
               </v-card>
             </v-dialog>
