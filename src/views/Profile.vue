@@ -36,6 +36,33 @@
       </v-row>
 
       <v-divider></v-divider>
+       <v-bottom-navigation
+    :value="value"
+    color="primary"
+    horizontal
+    width="500"
+    class="mx-auto mb-n6 elevation-0"
+    style="background-color: #f2f6f7"
+
+  >
+    <v-btn>
+      <span class="ml-n2">POSTS</span>
+
+      <v-icon size="18" class="mr-3">mdi-grid</v-icon>
+    </v-btn>
+
+    <v-btn class="mx-6">
+      <span class="ml-n2">SAVED</span>
+
+      <v-icon size="18" class="mr-3">mdi-bookmark-outline</v-icon>
+    </v-btn>
+
+    <v-btn>
+      <span class="ml-n2">TAGGED</span>
+
+      <v-icon size="18" class="mr-3">mdi-account-box-outline</v-icon>
+    </v-btn>
+  </v-bottom-navigation>
       <v-row
         class="mt-6"
         align="center"
