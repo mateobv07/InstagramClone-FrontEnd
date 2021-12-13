@@ -21,6 +21,7 @@
 
           <v-divider></v-divider>
           <v-img
+          @click="show_tags = !show_tags"
             :lazy-src="post_picture"
             max-width="auto"
             :src="post_picture"
@@ -167,7 +168,7 @@ export default {
   name: "Post",
   viewPost: false,
   data: () => ({
-    story_images: 6,
+    show_tags: false,
   }),
   props: {
     username: String,
@@ -176,6 +177,8 @@ export default {
     post_likes: Number,
     post_description: String,
     post_comments: Array,
+    post_tags: Array,
   },
+  
 };
 </script>

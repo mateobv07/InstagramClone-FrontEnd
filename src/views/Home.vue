@@ -60,6 +60,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : ["mateobv07", "cristianoRonaldo"],
         },
       {
         "username" : "Usuario",
@@ -69,6 +70,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : ["mateobv07", "cristianoRonaldo"],
       },
       {
         "username" : "Usuario",
@@ -78,6 +80,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : [""],
       },
       {
         "username" : "Usuario",
@@ -87,6 +90,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : ["mateobv07", "cristianoRonaldo"],
       },
       {
         "username" : "Usuario",
@@ -96,6 +100,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : [""],
       },
       {
         "username" : "Usuario",
@@ -105,6 +110,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : [""],
       },
       {
         "username" : "Usuario",
@@ -114,6 +120,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : [""],
       },
       {
         "username" : "Usuario",
@@ -123,6 +130,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : [""],
       },
       {
         "username" : "Usuario",
@@ -132,6 +140,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
+        "post_tags" : [""],
       },
     ],
   }),
