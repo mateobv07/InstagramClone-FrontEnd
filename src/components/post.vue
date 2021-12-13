@@ -65,7 +65,7 @@
                   <v-col>
                     <v-sheet
                       class="mt-n3"
-                      height="812"
+                      height="662"
                       style="background-color: white"
                     >
                       <v-row class="mx-3">
@@ -100,17 +100,40 @@
                         :key="`${comment}`"
                         class="mx-5"
                       >
-                        <h4 class="text-subtitle-2 ">
+                        <h4 class="text-subtitle-2">
                           {{ comment.username }}
                         </h4>
-                        <p
-                          class="text-body-2 mx-2"
-                          style="padding-top: 1.5px"
-                        >
+                        <p class="text-body-2 mx-2" style="padding-top: 1.5px">
                           {{ comment.comment }}
                         </p>
                       </v-row>
                     </v-sheet>
+                    <v-sheet
+                      class="mt-0"
+                      height="150"
+                      style="background-color: white"
+                    >
+                      <v-divider class="py-3"></v-divider>
+                      <v-row class="mx-5" justify="space-between">
+                        <v-icon size="30" color="black"
+                          >mdi-heart-outline</v-icon
+                        >
+                        <v-icon size="30" color="black"
+                          >mdi-bookmark-outline</v-icon
+                        >
+                      </v-row>
+                      <v-row class="mx-5 mt-5">
+                        <h4 class="text-subtitle-2">{{ post_likes }} likes</h4>
+                      </v-row>
+                    <v-text-field
+                    class="ml-5 mr-5 mt-6"
+                      v-model="message2"
+                      
+                      label="Comment..."
+                      clearable
+                    ></v-text-field>
+                    </v-sheet>
+                    
                   </v-col>
                 </v-row>
               </v-card>
