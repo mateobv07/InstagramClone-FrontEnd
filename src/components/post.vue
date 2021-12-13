@@ -187,9 +187,9 @@
 <script>
 export default {
   name: "Post",
-  viewPost: false,
   data: () => ({
     show_tags: false,
+    viewPost: false,
   }),
   props: {
     username: String,

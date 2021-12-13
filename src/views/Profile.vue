@@ -77,8 +77,9 @@
           v-for="i in 3"
           :key="i"
         >
-          <v-dialog v-model="viewPost" max-width="1400">
+          <v-dialog v-model="lol" max-width="1400">
             <template v-slot:activator="{ on, attrs }">
+
               <v-hover v-slot="{ hover }">
                 <v-img
                   :class="{ 'on-hover': hover }"
@@ -112,7 +113,7 @@
                 </v-img></v-hover
               >
             </template>
-            <v-card height="800" class="mb-1" style="background-color: black">
+            <v-card height="800" class="mb-1" style="background-color: black" >
               <v-row no-gutters>
                 <v-col md="8" align="center">
                   <v-img
@@ -122,7 +123,17 @@
                     width="1000"
                     height="800"
                     :src="posts[(n - 1) * 3 + i - 1].post_picture"
-                  ></v-img
+                  > 
+                  <v-container v-if="show_tags" fill-height>
+                      <v-row justify="center" align="center">
+                      <v-sheet v-for="postTag in tagz" :key="postTag" color="black" height="30" class="ma-3 px-2 rounded-lg">
+                        <p  class="text-center white--text text-subtitle-2 pt-1">
+                          {{postTag}}
+                        </p>
+                        </v-sheet>
+                      </v-row>
+                    </v-container>
+                  </v-img
                 ></v-col>
 
                 <v-col>
@@ -165,8 +176,7 @@
                       </p>
                     </v-row>
                     <v-row
-                      v-for="comment in posts[(n - 1) * 3 + i - 1]
-                        .post_comments"
+                      v-for="comment in posts[(n - 1) * 3 + i - 1].post_comments"
                       :key="`${comment}`"
                       class="mx-5"
                     >
@@ -221,165 +231,99 @@ export default {
     //
   },
   data: () => ({
-    posts: [
+    dialog: false,
+    tagz:['lol','mateo'],
+    show_tags: false,
+    posts:[
       {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture: "https://wallpaperaccess.com/full/31193.jpg",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
+        "username" : "Usuario",
+        "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+        "post_picture" : "https://wallpaperaccess.com/full/31193.jpg",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : ["mateobv07", "cristianoRonaldo"],
+        },
+      {
+        "username" : "Usuario",
+        "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+        "post_picture" : "https://wallpapercave.com/wp/wp4576169.jpg",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : ["mateobv07", "cristianoRonaldo"],
       },
       {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture: "https://wallpapercave.com/wp/wp4576169.jpg",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
+        "username" : "Usuario",
+        "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+        "post_picture" : "https://us.123rf.com/450wm/kostsov/kostsov1906/kostsov190600026/126080344-modern-showcase-with-empty-space-on-pedestal-on-blue-background-3d-rendering-.jpg?ver=6",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : [],
       },
       {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture:
-          "https://us.123rf.com/450wm/kostsov/kostsov1906/kostsov190600026/126080344-modern-showcase-with-empty-space-on-pedestal-on-blue-background-3d-rendering-.jpg?ver=6",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
+        "username" : "Usuario",
+        "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+        "post_picture" : "https://wallpaperaccess.com/full/1269989.jpg",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : ["mateobv07", "cristianoRonaldo"],
       },
       {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture: "https://wallpaperaccess.com/full/1269989.jpg",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
+        "username" : "Usuario",
+        "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+        "post_picture" : "https://us.123rf.com/450wm/kostsov/kostsov1906/kostsov190600026/126080344-modern-showcase-with-empty-space-on-pedestal-on-blue-background-3d-rendering-.jpg?ver=6",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : [],
       },
       {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture:
-          "https://us.123rf.com/450wm/kostsov/kostsov1906/kostsov190600026/126080344-modern-showcase-with-empty-space-on-pedestal-on-blue-background-3d-rendering-.jpg?ver=6",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
+        "username" : "Usuario",
+        "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+        "post_picture" : "https://wallpaperaccess.com/full/31193.jpg",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : [],
       },
       {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture: "https://wallpaperaccess.com/full/31193.jpg",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
+        "username" : "Usuario",
+        "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+        "post_picture" : "https://us.123rf.com/450wm/kostsov/kostsov1906/kostsov190600026/126080344-modern-showcase-with-empty-space-on-pedestal-on-blue-background-3d-rendering-.jpg?ver=6",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : [],
       },
       {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture:
-          "https://us.123rf.com/450wm/kostsov/kostsov1906/kostsov190600026/126080344-modern-showcase-with-empty-space-on-pedestal-on-blue-background-3d-rendering-.jpg?ver=6",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
+        "username" : "Usuario",
+        "profile_picture" : "https://images.pexels.com/photos/1034662/pexels-photo-1034662.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "post_picture" : "https://images.pexels.com/photos/1034662/pexels-photo-1034662.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : [],
       },
       {
-        username: "Usuario",
-        profile_picture:
-          "https://images.pexels.com/photos/1034662/pexels-photo-1034662.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        post_picture:
-          "https://images.pexels.com/photos/1034662/pexels-photo-1034662.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
-      },
-      {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture:
-          "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171__480.jpg",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
+        "username" : "Usuario",
+        "profile_picture" : "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+        "post_picture" : "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171__480.jpg",
+        "post_likes" : 200,
+        "post_description" : "Usuario Insta life lol lorem ipsum",
+        "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
+        "date_created" : "",
+        "post_tags" : [],
       },
     ],
     followers: 243,
@@ -389,5 +333,10 @@ export default {
     user_description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis iaculis urna, id lobortis tortor vulputate at. Sed luctus, massa sed euismod gravida, ex",
   }),
+  methods: {
+    show_tag(){
+      this.show_tags = !this.show_tags;
+    }
+  },
 };
 </script>
