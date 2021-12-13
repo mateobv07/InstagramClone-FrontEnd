@@ -3,7 +3,7 @@
     <v-row justify="center" no-gutters>
       <v-col :md="$vuetify.breakpoint.lg ? 8 : $vuetify.breakpoint.md ? 10 : $vuetify.breakpoint.smAndDown ? 12 : 5" offset-xl="0" >
         <hello-world class="pt-8" />
-        <post v-for="i in posts" :key="`${i}`" :username="i.username" :profile_picture="i.profile_picture" :post_picture="i.post_picture"  :post_likes="i.post_likes" :post_description="i.post_description" :post_comments="i.post_comments" />
+        <post v-for="i in posts" :key="`${i}`" :username="i.username" :profile_picture="i.profile_picture" :post_picture="i.post_picture"  :post_likes="i.post_likes" :post_description="i.post_description" :post_comments="i.post_comments" :post_tags="i.post_tags"/>
       </v-col>
       <v-col v-if="!$vuetify.breakpoint.smAndDown" class="pt-12" md="2">
         <div style="position: sticky; top: 105px">
@@ -80,7 +80,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
-        "post_tags" : [""],
+        "post_tags" : [],
       },
       {
         "username" : "Usuario",
@@ -100,7 +100,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
-        "post_tags" : [""],
+        "post_tags" : [],
       },
       {
         "username" : "Usuario",
@@ -110,7 +110,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
-        "post_tags" : [""],
+        "post_tags" : [],
       },
       {
         "username" : "Usuario",
@@ -120,7 +120,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
-        "post_tags" : [""],
+        "post_tags" : [],
       },
       {
         "username" : "Usuario",
@@ -130,7 +130,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
-        "post_tags" : [""],
+        "post_tags" : [],
       },
       {
         "username" : "Usuario",
@@ -140,7 +140,7 @@ export default {
         "post_description" : "Usuario Insta life lol lorem ipsum",
         "post_comments" : [{"username":"Elver", "comment": "So cool, where was this taken?" },{"username":"Mateobv07", "comment": "Lorem impsum xasxs csdc wewsa leasd cexer"},],
         "date_created" : "",
-        "post_tags" : [""],
+        "post_tags" : [],
       },
     ],
   }),

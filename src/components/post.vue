@@ -26,7 +26,17 @@
             max-width="auto"
             :src="post_picture"
             alt="post picture"
-          ></v-img>
+          >
+           <v-container v-if="show_tags" fill-height>
+                      <v-row justify="center" align="center">
+                      <v-sheet v-for="tag in post_tags" :key="tag" color="black" height="30" class="ma-3 px-2 rounded-lg">
+                        <p  class="text-center white--text text-subtitle-2 pt-1">
+                          {{tag}}
+                        </p>
+                        </v-sheet>
+                      </v-row>
+                    </v-container>
+          </v-img>
           <v-divider class="pb-6"></v-divider>
           <v-row class="mx-4" justify="space-between">
             <v-icon size="30" color="black">mdi-heart-outline</v-icon>
@@ -54,13 +64,24 @@
                 <v-row no-gutters>
                   <v-col md="8" align="center">
                     <v-img
+                    @click="show_tags = !show_tags"
                       contain
                       alt="post picture"
                       :lazy-src="post_picture"
                       width="1000"
                       height="800"
                       :src="post_picture"
-                    ></v-img
+                    >
+                    <v-container v-if="show_tags" fill-height>
+                      <v-row justify="center" align="center">
+                      <v-sheet v-for="tag in post_tags" :key="tag" color="black" height="30" class="ma-3 px-2 rounded-lg">
+                        <p  class="text-center white--text text-subtitle-2 pt-1">
+                          {{tag}}
+                        </p>
+                        </v-sheet>
+                      </v-row>
+                    </v-container>
+                    </v-img
                   ></v-col>
 
                   <v-col>

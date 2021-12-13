@@ -14,7 +14,7 @@
         /></v-btn>
       </div>
       <v-spacer></v-spacer>
-      <v-col col="1" md="2">
+      <v-col col="1" md="4">
         <v-text-field
           dense
           style="height: 0px"
