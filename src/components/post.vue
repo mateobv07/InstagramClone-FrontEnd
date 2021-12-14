@@ -21,28 +21,54 @@
 
           <v-divider></v-divider>
           <v-img
-          @click="show_tags = !show_tags"
+            @click="show_tags = !show_tags"
             :lazy-src="post_picture"
             max-width="auto"
             :src="post_picture"
             alt="post picture"
           >
-           <v-container v-if="show_tags" fill-height>
-                      <v-row justify="center" align="center">
-                      <v-sheet v-for="tag in post_tags" :key="tag" color="black" height="30" class="ma-3 px-2 rounded-lg">
-                        <p  class="text-center white--text text-subtitle-2 pt-1">
-                          {{tag}}
-                        </p>
-                        </v-sheet>
-                      </v-row>
-                    </v-container>
+            <v-container v-if="show_tags" fill-height>
+              <v-row justify="center" align="center">
+                <v-sheet
+                  v-for="tag in post_tags"
+                  :key="tag"
+                  color="black"
+                  height="30"
+                  class="ma-3 px-2 rounded-lg"
+                >
+                  <p class="text-center white--text text-subtitle-2 pt-1">
+                    {{ tag }}
+                  </p>
+                </v-sheet>
+              </v-row>
+            </v-container>
           </v-img>
           <v-divider class="pb-6"></v-divider>
           <v-row class="mx-4" justify="space-between">
-            <v-icon @click="liked = !liked" v-if="!liked" size="30" color="black">mdi-heart-outline</v-icon>
-            <v-icon @click="liked = !liked" v-if="liked" size="30" color="red accent-2">mdi-heart</v-icon>
-            <v-icon @click="saved = !saved" v-if="saved" size="30" color="black">mdi-bookmark</v-icon>
-            <v-icon @click="saved = !saved" v-if="!saved" size="30" color="black">mdi-bookmark-outline</v-icon>
+            <v-icon
+              @click="liked = !liked"
+              v-if="!liked"
+              size="30"
+              color="black"
+              >mdi-heart-outline</v-icon
+            >
+            <v-icon
+              @click="liked = !liked"
+              v-if="liked"
+              size="30"
+              color="red accent-2"
+              >mdi-heart</v-icon
+            >
+            <v-icon @click="saved = !saved" v-if="saved" size="30" color="black"
+              >mdi-bookmark</v-icon
+            >
+            <v-icon
+              @click="saved = !saved"
+              v-if="!saved"
+              size="30"
+              color="black"
+              >mdi-bookmark-outline</v-icon
+            >
           </v-row>
           <v-row class="mx-4 mt-6">
             <h4 class="text-subtitle-2">{{ post_likes }} likes</h4>
@@ -66,7 +92,7 @@
                 <v-row no-gutters>
                   <v-col md="8" align="center">
                     <v-img
-                    @click="show_tags = !show_tags"
+                      @click="show_tags = !show_tags"
                       contain
                       alt="post picture"
                       :lazy-src="post_picture"
@@ -74,17 +100,25 @@
                       height="800"
                       :src="post_picture"
                     >
-                    <v-container v-if="show_tags" fill-height>
-                      <v-row justify="center" align="center">
-                      <v-sheet v-for="tag in post_tags" :key="tag" color="black" height="30" class="ma-3 px-2 rounded-lg">
-                        <p  class="text-center white--text text-subtitle-2 pt-1">
-                          {{tag}}
-                        </p>
-                        </v-sheet>
-                      </v-row>
-                    </v-container>
-                    </v-img
-                  ></v-col>
+                      <v-container v-if="show_tags" fill-height>
+                        <v-row justify="center" align="center">
+                          <v-sheet
+                            v-for="tag in post_tags"
+                            :key="tag"
+                            color="black"
+                            height="30"
+                            class="ma-3 px-2 rounded-lg"
+                          >
+                            <p
+                              class="text-center white--text text-subtitle-2 pt-1"
+                            >
+                              {{ tag }}
+                            </p>
+                          </v-sheet>
+                        </v-row>
+                      </v-container>
+                    </v-img></v-col
+                  >
 
                   <v-col>
                     <v-sheet
@@ -139,25 +173,45 @@
                     >
                       <v-divider class="py-3"></v-divider>
                       <v-row class="mx-5" justify="space-between">
-                        <v-icon size="30" color="black"
+                        <v-icon
+                          @click="liked = !liked"
+                          v-if="!liked"
+                          size="30"
+                          color="black"
                           >mdi-heart-outline</v-icon
                         >
-                        <v-icon size="30" color="black"
+                        <v-icon
+                          @click="liked = !liked"
+                          v-if="liked"
+                          size="30"
+                          color="red accent-2"
+                          >mdi-heart</v-icon
+                        >
+                        <v-icon
+                          @click="saved = !saved"
+                          v-if="saved"
+                          size="30"
+                          color="black"
+                          >mdi-bookmark</v-icon
+                        >
+                        <v-icon
+                          @click="saved = !saved"
+                          v-if="!saved"
+                          size="30"
+                          color="black"
                           >mdi-bookmark-outline</v-icon
                         >
                       </v-row>
                       <v-row class="mx-5 mt-5">
                         <h4 class="text-subtitle-2">{{ post_likes }} likes</h4>
                       </v-row>
-                    <v-text-field
-                    class="ml-5 mr-5 mt-6"
-                      v-model="message2"
-                      
-                      label="Comment..."
-                      clearable
-                    ></v-text-field>
+                      <v-text-field
+                        class="ml-5 mr-5 mt-6"
+                        v-model="message2"
+                        label="Comment..."
+                        clearable
+                      ></v-text-field>
                     </v-sheet>
-                    
                   </v-col>
                 </v-row>
               </v-card>
@@ -204,6 +258,5 @@ export default {
     post_comments: Array,
     post_tags: Array,
   },
-  
 };
 </script>

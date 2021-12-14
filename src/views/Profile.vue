@@ -234,6 +234,8 @@ export default {
     dialog: false,
     tagz:['lol','mateo'],
     show_tags: false,
+    liked: false,
+    saved: false,
     posts:[
       {
         "username" : "Usuario",
