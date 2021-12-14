@@ -39,8 +39,10 @@
           </v-img>
           <v-divider class="pb-6"></v-divider>
           <v-row class="mx-4" justify="space-between">
-            <v-icon size="30" color="black">mdi-heart-outline</v-icon>
-            <v-icon size="30" color="black">mdi-bookmark-outline</v-icon>
+            <v-icon @click="liked = !liked" v-if="!liked" size="30" color="black">mdi-heart-outline</v-icon>
+            <v-icon @click="liked = !liked" v-if="liked" size="30" color="red accent-2">mdi-heart</v-icon>
+            <v-icon @click="saved = !saved" v-if="saved" size="30" color="black">mdi-bookmark</v-icon>
+            <v-icon @click="saved = !saved" v-if="!saved" size="30" color="black">mdi-bookmark-outline</v-icon>
           </v-row>
           <v-row class="mx-4 mt-6">
             <h4 class="text-subtitle-2">{{ post_likes }} likes</h4>
@@ -190,6 +192,8 @@ export default {
   data: () => ({
     show_tags: false,
     viewPost: false,
+    liked: false,
+    saved: false,
   }),
   props: {
     username: String,
