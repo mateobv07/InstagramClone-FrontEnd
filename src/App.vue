@@ -28,9 +28,9 @@
       </v-col>
       <v-spacer></v-spacer>
 
-      <v-icon color="black" size="26" class="mx-2">mdi-home</v-icon>
+      <v-icon color="black" size="26" class="mx-2" @click="goToHome()">mdi-home</v-icon>
 
-      <v-icon color="black" size="26" class="mx-2">mdi-plus</v-icon>
+      <v-icon color="black" size="26" class="mx-2 mr-4">mdi-plus</v-icon>
 
 
       <v-menu
