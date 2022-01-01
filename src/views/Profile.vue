@@ -37,7 +37,6 @@
 
       <v-divider></v-divider>
       <v-bottom-navigation
-        :value="value"
         color="primary"
         horizontal
         width="500"
@@ -242,7 +241,7 @@
                     </v-row>
                     <v-text-field
                       class="ml-5 mr-5 mt-6"
-                      v-model="message2"
+                      v-model="comment"
                       label="Comment..."
                       clearable
                     ></v-text-field>
@@ -265,6 +264,7 @@ export default {
   data: () => ({
     dialog: false,
     postView: {},
+    comment:"",
     tagz: ["lol", "mateo"],
     show_tags: false,
     liked: false,
