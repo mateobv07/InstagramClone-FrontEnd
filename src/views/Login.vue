@@ -25,6 +25,7 @@
           src="../assets/insta_name.png"
         ></v-img>
         <v-text-field
+        v-model="username"
             filled        
             class="mx-7 pt-4 rounded-1"
             label="Email or Username"
@@ -32,13 +33,17 @@
             dense
           ></v-text-field>
           <v-text-field
+          v-model="password"
+            :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show3 ? 'text' : 'password'"
             filled        
             class="mx-7 mt-n5 rounded-1"
             label="Password"
             outlined
             dense
+            @click:append="show3 = !show3"
           ></v-text-field>
-          <v-btn color="light-blue darken-1" width="270" height="32" class="mt-n3">
+          <v-btn @click="login()" color="light-blue darken-1" width="270" height="32" class="mt-n3">
           <p class="white--text text-button mt-5">Login</p>
           </v-btn>
           <v-divider class="mt-7 mx-7"></v-divider>
@@ -61,6 +66,7 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
   name: "Login",
 
@@ -72,9 +78,33 @@ export default {
     followers: 243,
     following: 324,
     user_real_name: "Real name",
-    username: "User",
+    username: "",
+    password: "",
+    show3: false,
+    auth_token:"",
     user_description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis iaculis urna, id lobortis tortor vulputate at. Sed luctus, massa sed euismod gravida, ex",
   }),
+  methods: {
+    login() {
+      var vueinstance = this;
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:8000/account/login/",
+        data: {
+          username: this.username,
+          password: this.password,
+        },
+      })
+        .then(function (response) {
+          console.log(response.data)
+          vueinstance.auth_token = response.data.token
+          vueinstance.$router.push('/') 
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  }
 };
 </script>
