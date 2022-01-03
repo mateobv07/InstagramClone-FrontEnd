@@ -81,16 +81,10 @@
               :class="{ 'on-hover': hover }"
               @click="viewPost(posts[(n - 1) * 3 + i - 1])"
               alt="post"
-              :lazy-src="
-                'http://127.0.0.1:8000' +
-                posts[(n - 1) * 3 + i - 1].post_picture
-              "
+              :lazy-src="posts[(n - 1) * 3 + i - 1].post_picture"
               height="290"
               width="290"
-              :src="
-                'http://127.0.0.1:8000' +
-                posts[(n - 1) * 3 + i - 1].post_picture
-              "
+              :src="posts[(n - 1) * 3 + i - 1].post_picture"
             >
               <v-card
                 v-if="hover"
@@ -127,10 +121,10 @@
                 @click="show_tags = !show_tags"
                 contain
                 alt="post picture"
-                :lazy-src="'http://127.0.0.1:8000' + postView.post_picture"
+                :lazy-src="postView.post_picture"
                 width="1000"
                 height="800"
-                :src="'http://127.0.0.1:8000' + postView.post_picture"
+                :src="postView.post_picture"
               >
                 <v-container v-if="show_tags" fill-height>
                   <v-row justify="center" align="center">
@@ -267,35 +261,7 @@ export default {
     show_tags: false,
     liked: false,
     saved: false,
-    posts: [
-      {
-        username: "Usuario",
-        profile_picture:
-          "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-        post_picture: "https://wallpaperaccess.com/full/31193.jpg",
-        post_likes: 200,
-        post_description: "Usuario Insta life lol lorem ipsum",
-        post_comments: [
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-          { username: "Elver", comment: "So cool, where was this taken?" },
-          {
-            username: "Mateobv07",
-            comment: "Lorem impsum xasxs csdc wewsa leasd cexer",
-          },
-        ],
-        date_created: "",
-        post_tags: ["mateobv07", "cristianoRonaldo"],
-      },
-    ],
+    posts: [],
     followers: 243,
     following: 324,
     user_real_name: "Real name",
@@ -303,7 +269,8 @@ export default {
     user_description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis iaculis urna, id lobortis tortor vulputate at. Sed luctus, massa sed euismod gravida, ex",
   }),
-  beforeMount() {
+  created() {
+    this.getUserInfo();
     this.getPosts();
   },
   methods: {
@@ -314,6 +281,26 @@ export default {
       this.postView = {};
       this.postView = post;
       this.dialog = true;
+    },
+    getUserInfo() {
+      var vueinstance = this;
+      axios({
+        method: "GET",
+        url: "http://127.0.0.1:8000/account/myprofile/",
+        headers: {
+          Authorization: "Token b0f55c48c8631f081a7319920972fc6c1da4b697",
+        },
+      })
+        .then(function (response) {
+          console.log(response.data);
+          var user_object = response.data
+          vueinstance.username = user_object.user.username
+          vueinstance.user_real_name = user_object.user.real_name 
+          vueinstance.description = user_object.description
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
 
     getPosts() {
@@ -336,16 +323,16 @@ export default {
             parsed_comments = [];
             for (let n = 0; n < unparsed_posts[i].comments.length; n++) {
               var parsing_comment = {
-                username: "Elver",
+                username: unparsed_posts[i].comments[n].username,
                 comment: unparsed_posts[i].comments[n].comment,
               };
               parsed_comments.push(parsing_comment);
             }
             current_post = {
-              username: unparsed_posts[i].user.username,
+              username: vueinstance.username,
               profile_picture:
                 "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-              post_picture: unparsed_posts[i].image,
+              post_picture: "http://127.0.0.1:8000" + unparsed_posts[i].image,
               post_likes: unparsed_posts[i].likes,
               post_description: unparsed_posts[i].description,
               post_comments: parsed_comments,
