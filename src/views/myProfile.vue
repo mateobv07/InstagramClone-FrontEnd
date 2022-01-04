@@ -78,16 +78,17 @@
         >
           <v-hover v-slot="{ hover }">
             <v-img
+            :style="!posts[(n - 1) * 3 + i - 1]? 'opacity:0%' : ''"
               :class="{ 'on-hover': hover }"
-              @click="viewPost(posts[(n - 1) * 3 + i - 1])"
+              @click="posts[(n - 1) * 3 + i - 1] ? viewPost(posts[(n - 1) * 3 + i - 1]): ''"
               alt="post"
-              :lazy-src="posts[(n - 1) * 3 + i - 1].post_picture"
+              :lazy-src="posts[(n - 1) * 3 + i - 1]? posts[(n - 1) * 3 + i - 1].post_picture : 'https://m.media-amazon.com/images/I/31xSkiw6TOL._AC_SY355_.jpg'"
               height="290"
               width="290"
-              :src="posts[(n - 1) * 3 + i - 1].post_picture"
+              :src="posts[(n - 1) * 3 + i - 1]? posts[(n - 1) * 3 + i - 1].post_picture : 'https://m.media-amazon.com/images/I/31xSkiw6TOL._AC_SY355_.jpg'"
             >
               <v-card
-                v-if="hover"
+                v-if="posts[(n - 1) * 3 + i - 1] && hover"
                 height="290"
                 width="290"
                 style="background: rgba(0, 0, 0, 0.3)"
