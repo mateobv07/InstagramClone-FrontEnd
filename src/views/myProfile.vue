@@ -268,8 +268,7 @@ export default {
     total_user_posts: 0,
     user_real_name: "Real name",
     username: "User",
-    user_description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis iaculis urna, id lobortis tortor vulputate at. Sed luctus, massa sed euismod gravida, ex",
+    user_description:"",
   }),
   created() {
     this.getUserInfo();
@@ -296,9 +295,9 @@ export default {
         .then(function (response) {
           console.log(response.data);
           var user_object = response.data
-          vueinstance.username = user_object.user.username
-          vueinstance.user_real_name = user_object.user.real_name 
-          vueinstance.description = user_object.description
+          vueinstance.username = user_object.username
+          vueinstance.user_real_name = user_object.real_name 
+          vueinstance.user_description = user_object.Description
         })
         .catch(function (error) {
           console.log(error);
