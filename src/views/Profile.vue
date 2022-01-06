@@ -17,7 +17,7 @@
           </v-row>
           <v-row class="mt-5">
             <p class="pt-3">
-              <b>{{ posts.length }} </b>posts
+              <b>{{ total_user_posts }} </b>posts
             </p>
             <p class="pt-3 ml-6">
               <b>{{ followers }} </b>followers
@@ -43,19 +43,19 @@
         class="mx-auto mb-n6 elevation-0"
         style="background-color: #f2f6f7"
       >
-        <v-btn>
+        <v-btn  @click="getPosts()">
           <span class="ml-n2">POSTS</span>
 
           <v-icon size="18" class="mr-3">mdi-grid</v-icon>
         </v-btn>
 
-        <v-btn class="mx-6">
+        <v-btn class="mx-6" @click="getSavedPosts()">
           <span class="ml-n2">SAVED</span>
 
           <v-icon size="18" class="mr-3">mdi-bookmark-outline</v-icon>
         </v-btn>
 
-        <v-btn>
+        <v-btn @click="getTaggedPosts()">
           <span class="ml-n2">TAGGED</span>
 
           <v-icon size="18" class="mr-3">mdi-account-box-outline</v-icon>
@@ -130,7 +130,7 @@
                 <v-container v-if="show_tags" fill-height>
                   <v-row justify="center" align="center">
                     <v-sheet
-                      v-for="postTag in tagz"
+                      v-for="postTag in postView.post_tags"
                       :key="postTag"
                       color="black"
                       height="30"
@@ -265,10 +265,10 @@ export default {
     posts: [],
     followers: 243,
     following: 324,
+    total_user_posts: 0,
     user_real_name: "Real name",
     username: "User",
-    user_description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis iaculis urna, id lobortis tortor vulputate at. Sed luctus, massa sed euismod gravida, ex",
+    user_description:"",
   }),
   created() {
     this.getUserInfo();
@@ -295,9 +295,9 @@ export default {
         .then(function (response) {
           console.log(response.data);
           var user_object = response.data
-          vueinstance.username = user_object.user.username
-          vueinstance.user_real_name = user_object.user.real_name 
-          vueinstance.description = user_object.description
+          vueinstance.username = user_object.username
+          vueinstance.user_real_name = user_object.real_name 
+          vueinstance.user_description = user_object.Description
         })
         .catch(function (error) {
           console.log(error);
@@ -309,6 +309,7 @@ export default {
       var unparsed_posts;
       var current_post;
       var parsed_comments;
+      var parsed_tags;
       axios({
         method: "GET",
         url: "http://127.0.0.1:8000/post/myPosts/",
@@ -329,6 +330,12 @@ export default {
               };
               parsed_comments.push(parsing_comment);
             }
+            parsed_tags = []
+            for (let n = 0; n < unparsed_posts[i].tags.length; n++){
+              parsed_tags.push( unparsed_posts[i].tags[n].user.username) 
+            }
+
+
             current_post = {
               username: vueinstance.username,
               profile_picture:
@@ -338,7 +345,109 @@ export default {
               post_description: unparsed_posts[i].description,
               post_comments: parsed_comments,
               date_created: "",
-              post_tags: [],
+              post_tags: parsed_tags,
+            };
+            vueinstance.posts.push(current_post);
+          }
+          vueinstance.total_user_posts = vueinstance.posts.length
+          console.log(vueinstance.posts);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    getSavedPosts() {
+      var vueinstance = this;
+      var unparsed_posts;
+      var current_post;
+      var parsed_comments;
+      var parsed_tags;
+
+      axios({
+        method: "GET",
+        url: "http://127.0.0.1:8000/post/mySaved/",
+        headers: {
+          Authorization: "Token b0f55c48c8631f081a7319920972fc6c1da4b697",
+        },
+      })
+        .then(function (response) {
+          console.log(response.data);
+          unparsed_posts = response.data;
+          vueinstance.posts = [];
+          for (let i = 0; i < unparsed_posts.length; i++) {
+            parsed_comments = [];
+            for (let n = 0; n < unparsed_posts[i].post.comments.length; n++) {
+              var parsing_comment = {
+                username: unparsed_posts[i].post.comments[n].username,
+                comment: unparsed_posts[i].post.comments[n].comment,
+              };
+              parsed_comments.push(parsing_comment);
+            }
+            parsed_tags = []
+            for (let n = 0; n < unparsed_posts[i].post.tags.length; n++){
+              parsed_tags.push( unparsed_posts[i].post.tags[n].user.username) 
+            }
+            current_post = {
+              username: vueinstance.username,
+              profile_picture:
+                "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+              post_picture: "http://127.0.0.1:8000" + unparsed_posts[i].post.image,
+              post_likes: unparsed_posts[i].post.likes,
+              post_description: unparsed_posts[i].post.description,
+              post_comments: parsed_comments,
+              date_created: "",
+              post_tags: parsed_tags,
+            };
+            vueinstance.posts.push(current_post);
+          }
+          console.log(vueinstance.posts);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    getTaggedPosts() {
+      var vueinstance = this;
+      var unparsed_posts;
+      var current_post;
+      var parsed_comments;
+      var parsed_tags;
+
+      axios({
+        method: "GET",
+        url: "http://127.0.0.1:8000/post/mytags/",
+        headers: {
+          Authorization: "Token b0f55c48c8631f081a7319920972fc6c1da4b697",
+        },
+      })
+        .then(function (response) {
+          console.log(response.data);
+          unparsed_posts = response.data;
+          vueinstance.posts = [];
+          for (let i = 0; i < unparsed_posts.length; i++) {
+            parsed_comments = [];
+            for (let n = 0; n < unparsed_posts[i].post.comments.length; n++) {
+              var parsing_comment = {
+                username: unparsed_posts[i].post.comments[n].username,
+                comment: unparsed_posts[i].post.comments[n].comment,
+              };
+              parsed_comments.push(parsing_comment);
+            }
+            parsed_tags = []
+            for (let n = 0; n < unparsed_posts[i].post.tags.length; n++){
+              parsed_tags.push( unparsed_posts[i].post.tags[n].user.username) 
+            }
+
+            current_post = {
+              username: vueinstance.username,
+              profile_picture:
+                "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
+              post_picture: "http://127.0.0.1:8000" + unparsed_posts[i].post.image,
+              post_likes: unparsed_posts[i].post.likes,
+              post_description: unparsed_posts[i].post.description,
+              post_comments: parsed_comments,
+              date_created: "",
+              post_tags: parsed_tags,
             };
             vueinstance.posts.push(current_post);
           }
